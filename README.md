@@ -5,7 +5,7 @@
 
 
 ## Dependencies
-flask
-werkzeug
-flask_script
-flask_bootstrap
+- flask
+- werkzeug
+- flask_script
+- flask_bootstrap
