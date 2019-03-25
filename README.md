@@ -7,5 +7,7 @@
 ## Dependencies
 - flask
 - werkzeug
-- flask_script
-- flask_bootstrap
+- flask-script
+- flask-bootstrap
+- flask-moment
+- flask-wtf

@@ -1,4 +1,4 @@
-#!/Users/ryan/Desktop/programming_projects/flask_social/venv/bin/python
+#!/Users/ryan/Desktop/programming_projects/flask_social/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
