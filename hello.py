@@ -8,6 +8,8 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
 import os
+from flask_script import Shell
+from flask_migrate import Migrate, MigrateCommand
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -18,10 +20,11 @@ app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
-
 manager = Manager(app)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
+migrate = Migrate(app, db)
+manager.add_command('db', MigrateCommand)
 
 
 class Role(db.Model):
@@ -64,6 +67,11 @@ def index():
     return render_template('index.html',
             form=form, name=session.get('name'),
             known = session.get('known', False))
+
+
+def make_shell_context():
+    return dict(app=app, db=db, User=User, Role=Role)
+manager.add_command("shell", Shell(make_context=make_shell_context))
 
 @app.route('/user/<name>')
 def user(name):

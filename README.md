@@ -11,3 +11,5 @@
 - flask-bootstrap
 - flask-moment
 - flask-wtf
+- flask-migrate
+- flask-mail
